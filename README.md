@@ -156,7 +156,7 @@ Well, you are able to preivew on you own application by WiFi Connection now.
 ### 3. Basic action
 
 |Action|USB Connection|WiFi Connection|
-| :------------: | :------------: | :------------: | :------------: |
+| :------------: | :------------: | :------------: |
 |**Update Resolution**|UsbCameraController.updateResolution(int width, int height)|WifiCameraController.updateResolution(int width, int height)|
 |**Flip Horizontal**|UsbCameraSP.setIsFlipHorizontal(boolean value)|WifiCameraSP.setIsFlipHorizontal(boolean value)|
 |**Flip Vertical**|UsbCameraSP.setIsFlipVertical(boolean value)|WifiCameraSP.setIsFlipVertical(boolean value)|
