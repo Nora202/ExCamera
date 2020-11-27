@@ -1,7 +1,7 @@
 # ExCamera
 Android SDK and Demo for products (MicroScope CAM, TeleScope CAM) designed by Convergence Ltd.
 
-With ExCamera SDK, you are able to have an simple way to connect our products, and you can also develop more interesting and creative features by yourself.
+With ExCamera SDK, you are able to have a simple way to connect our products, and you can also develop more interesting and creative features by yourself.
 
 ## What we provide ?
 
@@ -9,7 +9,7 @@ First, we provide simple ways to connect our device, and encapsulates some popul
 
 Moreover, configurations (like focus, exposure, brightness, sharpness and so on) are controllable with our SDK，only if the hardware support them.
 
-Finally, our demo will tell you how to use the SDK, almost all of the functions mentioned above are shown clearly (just having a look at [CamManager][CamManager.dir] will be enough).
+Finally, our Demo will tell you how to use the SDK, almost all of the functions mentioned above are shown clearly (just having a look at [CamManager][CamManager.dir] will be enough).
 
 Anyway, "***Talk is cheap, show me the code***".
 
