@@ -256,6 +256,14 @@ Use methods in `UsbCameraController`, and tag from `UVCConfig`:
 - **public void resetParam(String tag)**
 
 	reset param config with tag
+	
+- **public void startTeleFocus(boolean isBack)**
+
+	start adjusting the telescope CAM focus and it is usually called when button is pressed down
+	
+- **public void stopTeleFocus(boolean isBack)**
+
+	stop adjusting the telescope CAM focus and it is usually called when button is pressed up or cancel
 
 **Note:**
 
@@ -322,6 +330,14 @@ Use methods in `WifiCameraController`, and tag from `WifiConfig`:
 - **public void setParam(String tag, int param)**
 
 	set value of param config with tag
+	
+- **public void startTeleFocus(boolean isBack)**
+
+	start adjusting the telescope CAM focus and it is usually called when button is pressed down
+	
+- **public void stopTeleFocus(boolean isBack)**
+
+	stop adjusting the telescope CAM focus and it is usually called when button is pressed up or cancel
 
 **Note:**
 
@@ -330,6 +346,107 @@ For `Focus` of **MicroScope CAM**, it will be **Auto** when `FocusAuto = 1` and 
 For `WhiteBalance` of **MicroScope CAM**, it will be **Auto** when `WhiteBalanceAuto = 1` and be **Manual** when `WhiteBalanceAuto = 0`
 
 For `Exposure` of **MicroScope CAM**, it will be **Auto** when `ExposureAuto = 3` and be **Manual** when `ExposureAuto = 1`
+
+### 5. Callback
+
+#### USB Connection
+
+`UsbCameraController.OnControlListener`
+
+- **void onUsbConnect()**
+
+	It will be called when the USB device is connected and permission is granted
+
+- **void onUsbDisConnect()**
+
+	It will be called when the USB device is disconnected
+
+- **void onCameraOpen()**
+
+	It will be called when the UVC Camera is opened
+
+- **void onCameraClose()**
+
+	It will be called when the UVC Camera is closed
+
+- **void onPreviewStart()**
+
+	It will be called when the preview start
+
+- **void onPreviewStop()**
+
+	It will be called when the preview stop
+
+- **void onUsbStateUpdate(UsbCameraState state)**
+
+	It will be called when [UsbCameraState][UsbCameraState.java] update
+
+- **void onActionStateUpdate(ActionState state)**
+
+	It will be called when [ActionState][ActionState.java] update
+
+- **void onLoadFrame(Bitmap bitmap)**
+
+	You can get every frame from this callback
+
+- **void onLoadFPS(int instantFPS, float averageFPS)**
+
+	You can get current FPS from this callback
+
+#### WiFi Connection
+
+`WifiCameraController.OnControlListener`
+
+- **void onStreamStart(boolean isRetry)**
+
+	It will be call when the stream start and preview correctly, and isRetry will be ture if restored from Retrying state
+
+- **void onStreamStop(boolean isRetry)**
+
+	It will be call when the stream stop, and isRetry will be ture if current state become Retrying
+
+- **void onWifiStateUpdate(WifiCameraState state)**
+
+	It will be called when [WifiCameraState][WifiCameraState.java] update
+
+- **void onActionStateUpdate(ActionState state)**
+
+	It will be called when [ActionState][ActionState.java] update
+
+- **void onParamUpdate(WifiCameraParam param, boolean isReset)**
+
+	It will be called when configuration is loaded success from network, and isReset will be true if the stream is just started
+
+- **void onLoadFrame(Bitmap bitmap)**
+
+	You can get every frame from this callback
+
+- **void onLoadFPS(int instantFPS, float averageFPS)**
+
+	You can get every frame from this callback
+
+## Thanks
+
+[UVCCamera][UVCCamera.link] , [AndroidUSBCamera][AndroidUSBCamera.link] , [
+mjpg-streamer][mjpg-streamer.link]
+
+Dependencies used in ExCamera SDK and Demo :
+
+[Retrofit][Retrofit.link] , [OkHttp][OkHttp.link] , [RxAndroid][RxAndroid.link] , [ButterKnife][ButterKnife.link] , [PermissionX][PermissionX.link] , [ImmersionBar][ImmersionBar.link]
+
+## Contact us
+
+**Email :**
+
+software@cvgc.cn
+
+**Official Website :**
+
+[www.cvgc.cn][cvgc.link]
+
+[www.tipscope.com][tipscope.link]
+
+[www.tinyscope.com][tinyscope.link]
 
 ## License
 
@@ -365,10 +482,23 @@ limitations under the License.
 [WifiMicroCamManager.java]: https://github.com/ConvergenceSoftware/ExCamera/blob/master/app/src/main/java/com/convergence/excamera/manager/WifiMicroCamManager
 [WifiConfig.java]: https://github.com/ConvergenceSoftware/ExCamera/blob/master/libexcamera/src/main/java/com/convergence/excamera/sdk/wifi/config/base/WifiConfig
 
+[ActionState.java]: https://github.com/ConvergenceSoftware/ExCamera/blob/master/libexcamera/src/main/java/com/convergence/excamera/sdk/common/ActionState
+[UsbCameraState.java]: https://github.com/ConvergenceSoftware/ExCamera/blob/master/libexcamera/src/main/java/com/convergence/excamera/sdk/usb/UsbCameraState
+[WifiCameraState.java]: https://github.com/ConvergenceSoftware/ExCamera/blob/master/libexcamera/src/main/java/com/convergence/excamera/sdk/wifi/WifiCameraState
+
+[cvgc.link]: http://www.cvgc.cn
+[tipscope.link]: http://www.tipscope.com
+[tinyscope.link]: https://www.tinyscope.com
+
 [UVCCamera.link]: https://github.com/saki4510t/UVCCamera
 [UVCPermissionTest.link]: https://github.com/saki4510t/UVCPermissionTest
 [UVCPermissionTest_Issue.link]: https://github.com/saki4510t/UVCPermissionTest/issues/1
+[AndroidUSBCamera.link]: https://github.com/jiangdongguo/AndroidUSBCamera
+[mjpg-streamer.link]: https://github.com/jacksonliam/mjpg-streamer
 
 [Retrofit.link]: https://github.com/square/retrofit
 [OkHttp.link]: https://github.com/square/okhttp
 [RxAndroid.link]: https://github.com/ReactiveX/RxAndroid
+[ButterKnife.link]: https://github.com/JakeWharton/butterknife
+[PermissionX.link]: https://github.com/guolindev/PermissionX
+[ImmersionBar.link]: https://github.com/gyf-dev/ImmersionBar
